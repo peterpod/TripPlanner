@@ -1,10 +1,64 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Test static html file.</title>
+	<title> Welcome to Trip Planner </title
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<script
+		type='text/javascript'
+		src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'>
+	</script>
+	<script src="js/recipe.js"></script>
+	<script src="js/sidebar.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script>
+	var counter = 1;
+	var limit = 3;
+	function addInput(divName){
+     if (counter == limit)  {
+          alert("You have reached the limit of adding " + counter + " inputs");
+     }
+     else {
+          var newdiv = document.createElement('div');
+          newdiv.innerHTML = "<h4>Destination " + (counter + 1) + " </h4>Country<br><input type='text' id= 'country' name='country' value=''><br>City<br><input type='text' id= 'city' name='city' value=''><br><input type='button' value='Add to Wish List' onClick='addWish("+(counter)+");'>";
+          document.getElementById(divName).appendChild(newdiv);
+          counter++;
+     }
+}
+	function addWish(Destination){
+		var country = document.getElementsByName("country")[Destination].value;
+		var city = document.getElementsByName("city")[Destination].value;
+		$('#sidebar').append('<li>'+city+', '+country+'</li>');
+	}
+</script>
+
 </head>
 <body>
-  <p> This is a test static html file.</p>
+	<div id="wrapper">
+
+	<h1>Welcome to Trip Planner</h1>
+	<h4>Where would you like to go?</h4>
+	<form id="f1">
+		<h4>Destination 1</h4>
+		Country <br><input id="country" type="text" label="country" name="country" value="" /><br>
+		<div id="inputs">
+		City <br><input id="city" type="text" name="city" value="" /><br>
+		<input type="button" value="Add to Wish List" onClick="addWish(0);">
+		</div>
+		<input type="button" value="Add Destination" onClick="addInput('inputs');">
+		<br>
+		<input type="submit" value="Lets Go"/>
+	</form>
+	<div id="pictureArea"></div>
+	<div id="sidebar">
+		<h2>Wish List</h2>
+		<ul>
+		
+		</ul>
+
+	</div>
+	</div>
+    <footer>
+      <div class="logo"><a href="https://www.openshift.com/"></a></div>
+    </footer>
 </body>
 </html>
