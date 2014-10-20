@@ -7,6 +7,8 @@ $(function() {   // when document is ready
 function getCountry() {
 	var destinations = document.getElementsByName("country");
 	var tag="";
+	//loop through destinations making sure to start with only new destinations
+	//so to not query flickr for the same photo multiple times
 	for(var i=destinations.length-1; i<destinations.length; i++){
 		var country = document.getElementsByName("country")[i].value;
 		var city = document.getElementsByName("city")[i].value;
